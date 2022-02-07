@@ -30,17 +30,29 @@ window.addEventListener('keydown', function(a) {
     const div= document.querySelector(`div[data-p="${a.keyCode}"]`);
     if(!audio) return;
     div.classList.add('playing');
+    div.classList.add('aud');
     audio.currentTime = 0;
     audio.play();
 });
- 
-function rmtransition(u) {   
-    this.classList.remove('playing');
-}
 
 const cont = document.querySelectorAll(".cont");
+cont.forEach(b => b.addEventListener('click', function() {
+    this.classList.add('playing');
+    this.classList.add('aud');
+    const audi = document.querySelector(`audio[data-p = "${b.getAttribute('data-p')}"`);
+    audi.currentTime = 0;
+    audi.play()
+}));
+cont.forEach(b => b.addEventListener('transitionend', function() {
+    this.classList.remove('playing');
+}));
 
-cont.forEach(b => b.addEventListener('transitionend', rmtransition));
+
+const aud = document.querySelectorAll("audio")
+aud.forEach(e => e.onended = function() {
+    const d = document.querySelector(`div[data-p = "${e.getAttribute('data-p')}"`);
+    d.classList.remove('aud');
+});
 
 </script>
 </body>

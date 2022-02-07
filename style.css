@@ -34,8 +34,19 @@ kbd {
     font-size: 2rem;
   }
 
+.cont:hover {
+    transform: scale(1.1);
+}
+
+.aud {
+    border-color: #ffc600;
+}
+
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
+}
+
+.playing:hover {
+    transform: scale(1.2);
 }
